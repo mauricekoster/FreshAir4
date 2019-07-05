@@ -11,6 +11,7 @@ import {P500Component} from './views/error/500.component';
 import {LoginComponent} from './views/login/login.component';
 import {RegisterComponent} from './views/register/register.component';
 import {LogoutComponent} from './views/logout/logout.component';
+import {SearchComponent} from "@/views/search/search.component";
 
 export const routes: Routes = [
   {
@@ -50,6 +51,7 @@ export const routes: Routes = [
       title: 'Register Page'
     }
   },
+
   {
     path: '',
     component: DefaultLayoutComponent,
@@ -57,50 +59,24 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-      // {
-      //   path: 'base',
-      //   loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
-      // },
-      // {
-      //   path: 'buttons',
-      //   loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
-      // },
-      // {
-      //   path: 'charts',
-      //   loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
-      // },
       {
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule),
         canActivate: [AuthGuard]
       },
-      // {
-      //   path: 'icons',
-      //   loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
-      // },
-      // {
-      //   path: 'notifications',
-      //   loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      // },
-      // {
-      //   path: 'theme',
-      //   loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      // },
-      // {
-      //   path: 'widgets',
-      //   loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      // }
+      {
+        path: 'search',
+        component: SearchComponent,
+        data: {
+          title: 'Search Page'
+        },
+        canActivate: [AuthGuard]
+      },
     ]
   },
   {path: '**', component: P404Component}
 ];
 
-
-// const routes: Routes = [
-//   {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard]},
-//   {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-//   {path: '**', redirectTo: 'dashboard'}
-// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

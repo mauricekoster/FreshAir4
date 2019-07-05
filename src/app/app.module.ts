@@ -50,6 +50,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {ChartsModule} from 'ng2-charts';
 import {ReactiveFormsModule} from '@angular/forms';
+import { SearchComponent } from './views/search/search.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     P500Component,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
