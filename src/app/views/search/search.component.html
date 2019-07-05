@@ -1,0 +1,377 @@
+<div class="animated fadeIn">
+
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-12 column">
+      <div class="card">
+        <h5 class="card-header">Honest Flight Search</h5>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-md-6 column">
+
+              <h5 class="card-header"><i class="fa fa-plane"></i>Where do you want to go?</h5>
+              <div class="card mb-3">
+                <div class="card-body">
+
+                  <label for="departure">Choose your departure city / airport</label>
+                  <div class="input-group">
+                    <select class="custom-select" id="departure" formControlName="departureCity">
+                      <!--               <option ng-repeat="a in vm.airports" value="{{a.code}}">{{a.name}}</option>-->
+                      <option>Dummy</option>
+                    </select>
+                  </div>
+
+                  <label for="destination">Choose your destination city / airport</label>
+                  <div class="input-group">
+                    <select class="custom-select" id="destination" formControlName="destinationCity">
+                      <!--              <option ng-repeat="a in vm.airports" value="{{a.code}}">{{a.name}}</option>-->
+                      <option>Dummy</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6 column">
+              <div class="card mb-3">
+                <h5 class="card-header"><i class="fa fa-clock-o"></i>
+                  When do you need to travel?</h5>
+                <div class="card-body">
+                </div>
+
+                <div class="form-group">
+                  <label for="DEPD" class="col-md-4">Departing</label>
+                  <div class="col-md-8">
+                    <p class="input-group">
+                      <input id="DEPD" type="date" class="form-control"
+                             formControlName="departureDate" />
+                    </p>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-md-4">Returning flight?</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ret" id="retYes" value="YES">
+                    <label class="form-check-label" for="retYes">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="ret" id="retNo" value="NO">
+                    <label class="form-check-label" for="retNo">No</label>
+                  </div>
+
+
+                </div>
+
+              </div>
+            </div>
+            <!--
+                <div class="col-md-6 column">
+
+                          <div class="panel panel-info">
+                            <div class="panel-heading">
+
+                              <h4 class="panel-title"><i class="fa fa-clock-o"></i>
+                                When do you need to travel?
+                              </h4>
+                            </div>
+                            <div class="panel-body">
+                              <div class="form-group">
+                                <label for="DEPD" class="col-md-4">Departing</label>
+                                <div class="col-md-8">
+                                  <p class="input-group">
+                                    <input type="text" class="form-control"
+                                           datepicker-popup="{{dateFormat}}" id="DEPD"
+                                           datepicker-options="dateOptions"
+                                           ng-model="departure.date" is-open="departure.opened" close-text="Close"
+                                    />
+                                    <span class="input-group-btn">
+                                                                    <button class="btn btn-default" ng-click="departure.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                                </span>
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label class="col-md-4">Returning flight?</label>
+                                <div class="radio-inline">
+                                  <label class="radio-inline">
+                                    <input type="radio" ng-model="vm.ret" name="RET" id="RET_YES" value="YES"> Yes
+                                  </label>
+                                </div>
+                                <div class="radio-inline">
+                                  <label class="radio-inline">
+                                    <input type="radio" ng-model="vm.ret" name="RET" id="RET_NO" value="NO"> No
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="RETD" class="col-md-4">Returning</label>
+                                <div class="col-md-8">
+                                  <p class="input-group">
+                                    <input type="text" class="form-control"
+                                           datepicker-popup="{{dateFormat}}" id="RETD"
+                                           ng-model="returning.date" is-open="returning.opened" close-text="Close"
+                                    />
+                                    <span class="input-group-btn">
+                                                                    <button class="btn btn-default" ng-click="returning.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                                </span>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+
+                </div>
+
+              </div>
+
+
+
+                      <div class="row">
+                        <div class="col-md-6 column">
+
+
+                          <div class="panel panel-info">
+                            <div class="panel-heading">
+
+                              <h4 class="panel-title"><i class="fa fa-user"></i>
+                                How many people are travelling?
+                              </h4>
+                            </div>
+                            <div class="panel-body">
+                              <div class="form-group">
+                                <label for="adt" class="col-md-8">adults (12 years or older)</label>
+                                <div class="col-md-4">
+                                  <select class="form-control" id="ADT" ng-model="vm.adt">
+                                    <option ng-repeat="age in vm.ageranges.adults">{{age}}</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="CHD" class="col-md-8">children (2-11 years)</label>
+                                <div class="col-md-4">
+                                  <select class="form-control" id="CHD" ng-model="vm.chd">
+                                    <option ng-repeat="age in vm.ageranges.children">{{age}}</option>
+                                  </select>
+                                </div>
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="INF" class="col-md-8">baby's (0-23 months)</label>
+                                <div class="col-md-4">
+                                  <select class="form-control" id="INF" ng-model="vm.inf">
+                                    <option ng-repeat="age in vm.ageranges.infants">{{age}}</option>
+                                  </select>
+                                </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 column">
+                          <div class="panel panel-info">
+                            <div class="panel-heading">
+
+                              <h4 class="panel-title"><i class="fa fa-ticket"></i>
+                                What ticket class would you prefer?
+                              </h4>
+                            </div>
+                            <div class="panel-body">
+                              <div class="form-group">
+                                <label for="FARETYPE" class="col-md-4">Select class</label>
+                                <div class="col-md-8">
+                                  <select class="form-control" id="FARETYPE" ng-model="vm.faretype">
+                                    <option value="FIRST">Business</option>
+                                    <option value="BESTPRICE" selected>Economy</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="widget-foot">
+                      <div class="clearfix">
+                        <button type="submit" class="btn btn-primary btn-default" name="submit">Continue</button>
+                        <button type="cancel" class="btn btn-cancel ">Cancel</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+            -->
+
+          </div><!--/.row-->
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!--
+    <div class="col-md-6 column">
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+
+                  <h4 class="panel-title"><i class="fa fa-clock-o"></i>
+                    When do you need to travel?
+                  </h4>
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="DEPD" class="col-md-4">Departing</label>
+                    <div class="col-md-8">
+                      <p class="input-group">
+                        <input type="text" class="form-control"
+                               datepicker-popup="{{dateFormat}}" id="DEPD"
+                               datepicker-options="dateOptions"
+                               ng-model="departure.date" is-open="departure.opened" close-text="Close"
+                        />
+                        <span class="input-group-btn">
+									                	<button class="btn btn-default" ng-click="departure.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+									            	</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4">Returning flight?</label>
+                    <div class="radio-inline">
+                      <label class="radio-inline">
+                        <input type="radio" ng-model="vm.ret" name="RET" id="RET_YES" value="YES"> Yes
+                      </label>
+                    </div>
+                    <div class="radio-inline">
+                      <label class="radio-inline">
+                        <input type="radio" ng-model="vm.ret" name="RET" id="RET_NO" value="NO"> No
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="RETD" class="col-md-4">Returning</label>
+                    <div class="col-md-8">
+                      <p class="input-group">
+                        <input type="text" class="form-control"
+                               datepicker-popup="{{dateFormat}}" id="RETD"
+                               ng-model="returning.date" is-open="returning.opened" close-text="Close"
+                        />
+                        <span class="input-group-btn">
+									                	<button class="btn btn-default" ng-click="returning.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+									            	</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+    </div>
+
+  </div>
+
+
+
+          <div class="row">
+            <div class="col-md-6 column">
+
+
+              <div class="panel panel-info">
+                <div class="panel-heading">
+
+                  <h4 class="panel-title"><i class="fa fa-user"></i>
+                    How many people are travelling?
+                  </h4>
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="adt" class="col-md-8">adults (12 years or older)</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="ADT" ng-model="vm.adt">
+                        <option ng-repeat="age in vm.ageranges.adults">{{age}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="CHD" class="col-md-8">children (2-11 years)</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="CHD" ng-model="vm.chd">
+                        <option ng-repeat="age in vm.ageranges.children">{{age}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="INF" class="col-md-8">baby's (0-23 months)</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="INF" ng-model="vm.inf">
+                        <option ng-repeat="age in vm.ageranges.infants">{{age}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-md-6 column">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+
+                  <h4 class="panel-title"><i class="fa fa-ticket"></i>
+                    What ticket class would you prefer?
+                  </h4>
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="FARETYPE" class="col-md-4">Select class</label>
+                    <div class="col-md-8">
+                      <select class="form-control" id="FARETYPE" ng-model="vm.faretype">
+                        <option value="FIRST">Business</option>
+                        <option value="BESTPRICE" selected>Economy</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="widget-foot">
+          <div class="clearfix">
+            <button type="submit" class="btn btn-primary btn-default" name="submit">Continue</button>
+            <button type="cancel" class="btn btn-cancel ">Cancel</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+-->
+
+
+
+  </form>
+</div>
