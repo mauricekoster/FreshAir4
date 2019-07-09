@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">
-          Gold members <span class="fa fa-user"></span>
+          Gold Members &nbsp;<span class="fa fa-user"></span>
         </div>
         <div class="card-body">
 
@@ -21,11 +21,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John</td>
-                <td>Papa</td>
-                <td>25</td>
-                <td>Florida</td>
+
+              <tr *ngFor="let person of persons">
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ person.location }}</td>
               </tr>
 
             </tbody>
@@ -33,5 +34,33 @@
         </div>
       </div>
     </div><!--/.col-->
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Available airports &nbsp;<span class="fa fa-plane"></span>
+        </div>
+        <div class="card-body">
+
+          <br>
+          <table class="table table-responsive-sm table-hover table-outline mb-0">
+            <thead class="thead-light">
+            <tr>
+              <th>Airport</th>
+              <th>Code</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let airport of airports">
+              <td>{{ airport.name }}</td>
+              <td>{{ airport.code }}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!--/.col-->
+
   </div><!--/.row-->
 </div>

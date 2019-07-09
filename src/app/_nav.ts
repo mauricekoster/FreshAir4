@@ -33,28 +33,16 @@ export const navItems: NavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'cui-speedometer'
   },
   {
     name: 'Search flight',
     url: '/search',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'cui-magnifying-glass'
   },
   {
     name: 'Log out',
     url: '/logout',
-    icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
+    icon: 'cui-account-logout'
   },
 ];
