@@ -21,36 +21,48 @@
                     <input type="text" id="clubnumber" class="form-control"
                            [class.is-invalid]="f.clubnumber.invalid"
                            [class.is-valid]="f.clubnumber.valid"
-                           placeholder="Club number" autocomplete="username" formControlName="clubnumber" required>
+                           placeholder="Club number" autocomplete="username"
+                           formControlName="clubnumber"
+                           required>
 
+                    <span class="invalid-feedback">
+                      <span *ngIf="f.clubnumber.invalid">
+                        <span *ngIf="f.clubnumber.errors.required && frm.submitted">
+                          Please fill out your Fresh & Honest Club number.
+                        </span>
+                      </span>
+                    </span>
 
                   </div>
-                  <div *ngIf="f.clubnumber.invalid">
-                    <div *ngIf="f.clubnumber.errors.required && frm.submitted" class="alert alert-danger">
-                      Please fill out your Fresh & Honest Club number.
-                    </div>
-                  </div>
-
 
                   <div class="input-group mb-4">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="icon-lock"></i></span>
                     </div>
-                    <input type="password" id="password" class="form-control" placeholder="Password" autocomplete="current-password" formControlName="password" required>
-                  </div>
-                  <div *ngIf="f.password.invalid">
-                    <div *ngIf="f.password.errors.required && frm.submitted" class="alert alert-danger">
-                      Please fill out your password.
-                    </div>
-                  </div>
+                    <input type="password" id="password"
+                           class="form-control"
+                           [class.is-invalid]="f.password.invalid"
+                           [class.is-valid]="f.password.valid"
+                           placeholder="Password" autocomplete="current-password"
+                           formControlName="password"
+                           required>
 
+                    <span class="invalid-feedback">
+                      <span *ngIf="f.password.invalid">
+                        <span *ngIf="f.password.errors.required && frm.submitted">
+                          Please fill out your password.
+                        </span>
+                      </span>
+                    </span>
+
+                  </div>
 
                   <div class="row">
                     <div class="col-6">
                       <button class="btn btn-primary px-4" type="submit" name="submit">Login</button>
                     </div>
-
                   </div>
+
                 </form>
 
               </div>
